@@ -1,62 +1,39 @@
-# 🏟️ Análisis Actuarial y Predictivo: El Costo de Oportunidad de la "Mística"
+# 🏟️ La Bombonera: ¿Mito o Realidad? Modelando el Costo de Oportunidad de la "Mística"
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Pandas](https://img.shields.io/badge/Pandas-Data_Wrangling-210458)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit_Learn-Machine_Learning-F7931E)
 ![Folium](https://img.shields.io/badge/Folium-Geospatial-77B829)
-![Status](https://img.shields.io/badge/Status-Completado-success)
 
-## 📌 Resumen Ejecutivo
-¿Es justificable mantener una infraestructura obsoleta basándose en el mito romántico de la "mística"? Este proyecto aborda una de las discusiones más pasionales del fútbol argentino (el impacto de La Bombonera y la localía de Boca Juniors) aplicando **Ciencia de Datos, Machine Learning y Simulaciones Actuariales**. 
+## 📌 El Debate
+¿Un estadio puede ganar partidos por sí solo, o aferrarse a una infraestructura de 1940 frena el crecimiento institucional? Este proyecto aborda el histórico debate sobre la "mística" de La Bombonera utilizando **Data Science, Machine Learning y Simulaciones Estocásticas**.
 
-A través del cruce de variables financieras, métricas de redes sociales, capacidad de estadios, valores inmobiliarios y resultados deportivos, el modelo cuantifica el verdadero peso de la localía y calcula el costo de oportunidad multimillonario frente a su principal competidor (River Plate).
+El objetivo es cuantificar si las características intangibles del estadio de Boca Juniors realmente impactan en el rendimiento deportivo, o si la limitación de su capacidad (54,000 espectadores) actúa como un techo financiero. Utilizando a River Plate (estadio de 85,000+ espectadores) como *benchmark* competitivo, este estudio proyecta los ingresos y resultados deportivos potenciales de un estadio para más de 100,000 personas.
 
-## 🎯 Objetivos del Proyecto
-* **Desmitificar la Localía:** Evaluar mediante modelos predictivos si la presión del estadio y la ubicación geográfica tienen un peso estadístico real sobre el *Win Rate*, o si el éxito obedece a factores financieros.
-* **Benchmarking Competitivo:** Medir la brecha de escala en infraestructura y valor de plantel entre Boca Juniors y River Plate.
-* **Simulación de Negocio:** Proyectar el impacto deportivo y económico de una hipotética ampliación del estadio a 100,000 espectadores.
+## 🎯 Objetivos Analíticos
+1. **Desmitificar la Localía:** Determinar, mediante modelos de clasificación, el peso real de las variables de infraestructura frente a las variables financieras en la probabilidad de victoria local.
+2. **Gap Analysis (Benchmarking):** Cuantificar la brecha de ingresos *Matchday* y valor de plantel frente al rival directo.
+3. **Proyección y Simulación:** Aplicar modelos de regresión y simulaciones de Montecarlo para calcular el lucro cesante actual y predecir el salto en el *Win Rate* bajo un escenario de modernización estructural (estadio mundialista).
 
-## 🗄️ Fuentes de Datos
-El pipeline de datos consolida información de múltiples fuentes mediante Web Scraping y APIs:
-* **Deportivas:** FBref (Resultados históricos y xG), AFA (Informes de Clubes).
-* **Financieras y Mercado:** Transfermarkt (Valor de plantillas, asistencia histórica).
-* **Sociales:** Índices de popularidad, encuestas de consultoras y engagement en redes sociales (IPI).
-* **Geoespaciales e Inmobiliarias:** MercadoLibre Inmuebles (Valor del m² en USD de los barrios de cada estadio).
+## ⚙️ Arquitectura de Datos y Metodología
+El proyecto se estructura en tres fases modulares:
 
-## ⚙️ Arquitectura y Metodología
-El proyecto se divide en 3 módulos principales iterativos:
+1. **Ingeniería de Datos (Scraping & ETL):** Construcción de un pipeline para extraer datos crudos de FBref (xG, resultados), Transfermarkt (asistencia, valor de mercado), informes de AFA y MercadoLibre (valor m² USD). Normalización de diccionarios y consolidación en DataFrames estructurados.
+2. **Feature Engineering & Análisis Espacial:** Creación de métricas relativas (diferenciales de ingresos, ratios de ocupación) y desarrollo del *Índice de Popularidad Integral (IPI)*. Modelado geoespacial (`Folium`) para cruzar éxito deportivo con valor inmobiliario.
+3. **Machine Learning & Simulación Actuarial:** 
+   * Entrenamiento de modelos **Random Forest** (Classifier y Regressor) para identificar *Feature Importance* y proyectar curvas de ingresos.
+   * **Simulación Montecarlo (10,000 iteraciones)** aplicando shocks de capital con rendimientos decrecientes y ruido estocástico, para modelar universos paralelos de rendimiento deportivo.
 
-1. **Ingeniería de Datos (Web Scraping & ETL):** Construcción de un pipeline de extracción de datos propios desde cero. Se utilizó `requests` y `BeautifulSoup` para raspar (scrape) sistemáticamente datos de resultados históricos (FBref), métricas financieras y de asistencia (Transfermarkt) y valores inmobiliarios por m² (MercadoLibre). Esto incluyó la limpieza, el manejo de excepciones (anti-bloqueos) y la estandarización de diccionarios para consolidar fuentes heterogéneas en una base de datos relacional limpia.
-2. **Feature Engineering & Geo-Analysis:** Creación del *Índice de Popularidad Integral (IPI)* y variables maestras relativas (Diferencia de Ingresos, Diferencia de Valor de Plantel). Clusterización geográfica mediante mapas de calor interactivos (`Folium`).
-3. **Modelado y Simulación (Montecarlo):** * **Random Forest Classifier:** Para determinar el peso de cada variable financiera/social en la probabilidad de victoria local.
-   * **Random Forest Regressor:** Para modelar la curva de ingresos *Matchday*.
-   * **Simulación Estocástica:** Escenarios Montecarlo (10,000 iteraciones) aplicando shocks económicos y ruido estocástico para proyectar el rendimiento deportivo bajo nuevas condiciones de infraestructura.
+## 📊 Business Insights: Mito vs. Realidad
 
-## 📊 Conclusiones Clave y Business Insights
+* **Billetera Mata Barrio (Finanzas > Arquitectura):** El análisis de importancia de variables y el clustering espacial demuestran que el éxito sostenido de la localía se explica por el valor diferencial del plantel y los ingresos consolidados, no por el barrio ni la acústica.
+* **El Costo de Oportunidad Multimillonario:** El benchmarking revela que la "mística" no justifica la brecha de escala. Mantener el aforo actual impone un techo de cristal que limita la monetización y ensancha la ventaja financiera del principal competidor.
+* **El Efecto Multiplicador (Visión Global):** Las simulaciones predictivas confirman que un estadio de 100,000+ lugares no solo absorbe la demanda histórica insatisfecha de la base de popularidad más grande del país, sino que ese "shock" económico reinvertido mejora la probabilidad base de victoria tanto de local como de visitante.
 
-* **1. El Precio Real de la "Mística" (Costo de Oportunidad Financiero)**
-El análisis de benchmarking demostró que la ventaja competitiva histórica de la infraestructura actual ha sido neutralizada por la brecha de escala. Al compararse con el estadio de su principal competidor (85k vs. 54k espectadores), mantener el estadio actual bajo el paradigma de la "mística" genera un lucro cesante multimillonario anual. La mística no justifica el costo de oportunidad; lo agrava al limitar severamente la monetización de servicios *Premium/Hospitality*.
-
-* **2. "Billetera Mata Barrio" (Análisis Geoespacial)**
-El cruce espacial con el valor del m² (USD) comprobó que la ubicación geográfica no determina el éxito. Los mapas probaron que el *Win Rate* de los clubes está directamente correlacionado con el valor de su plantilla y sus ingresos consolidados, operen en zonas de alto valor inmobiliario (Top CABA) o en zonas populares. El capital financiero dicta la fortaleza de la localía, no el código postal.
-
-* **3. El Efecto Cascada de la Expansión (Simulación Actuarial)**
-Las proyecciones confirmaron que el fútbol moderno es un ecosistema de rendimientos escalables. Ampliar la capacidad licúa el déficit de ingresos y genera un "shock económico" que, reinyectado eficientemente en el valor del plantel, aumenta la probabilidad base de victoria. La simulación Montecarlo demuestra un salto estadísticamente significativo en la expectativa de captura de puntos.
-
-## 💻 Tecnologías Utilizadas
-* **Lenguaje:** Python 3.x
-* **Ingeniería de Datos:** `requests`, `BeautifulSoup` (Web Scraping)
-* **Data Wrangling & Análisis:** `pandas`, `numpy`
-* **Machine Learning:** `scikit-learn` (Random Forest, MinMaxScaler, Matriz de Confusión)
-* **Visualización:** `matplotlib`, `seaborn`, `folium` (Geospatial)
-
-## 🚀 Cómo reproducir este proyecto
-1. Clonar el repositorio: `git clone https://github.com/tu_usuario/tu_repositorio.git`
-2. Instalar las dependencias: `pip install -r requirements.txt`
-3. Ejecutar los notebooks en orden secuencial:
-   * `1_Scraping_y_ETL.ipynb`
-   * `2_Estandarizacion.ipynb`
-   * `3_EDA_y_Modelado.ipynb`
+## 🚀 Estructura del Repositorio
+* `1_Scraping_y_ETL.ipynb`: Ingesta automatizada y limpieza inicial.
+* `2_Estandarizacion.ipynb`: Unificación de identidades y métricas financieras.
+* `3_EDA_y_Modelado.ipynb`: Análisis exploratorio, benchmarking, predicciones y simulaciones.
 
 ---
-*Desarrollado por [Esteban Mansilla / estebanm-mansilla] - Orientado a la toma de decisiones data-driven en la industria deportiva y financiera.*
+*Análisis desarrollado para traducir pasiones deportivas en decisiones estratégicas fundamentadas en datos.*
