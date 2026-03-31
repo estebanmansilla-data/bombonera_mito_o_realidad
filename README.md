@@ -62,5 +62,3 @@ El mantenimiento del aforo actual genera un **Lucro Cesante** que compromete la 
 ---
 
 *Análisis desarrollado con una visión 360° técnica en los datos, apasionada en el contexto y rigurosa en lo financiero, para demostrar competencias en **Data Science**, **Matemática Actuarial** y **Estrategia Financiera**
-
-
