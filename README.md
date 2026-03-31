@@ -16,54 +16,61 @@ Este proyecto aplica técnicas de **Ciencia de Datos, Machine Learning y Simulac
 
 ## 🛠️ Metodología y Arquitectura Analítica
 
-El proyecto se estructuró en fases incrementales, destacando un robusto proceso de ingeniería de datos previo al modelado:
-
-1. **Web Scraping Multifuente:** Extracción automatizada de datos de *Transfermarkt* (valores de mercado), *FBref* (estadísticas deportivas) y portales inmobiliarios (valor del m²), utilizando `BeautifulSoup` y `Requests`.
-2. **Pipeline de Estandarización (ETL):** Implementación de un **Diccionario Maestro de Clubes** para resolver la inconsistencia de nombres entre fuentes (e.g., "Boca", "C.A.B.J.", "Boca Juniors"), logrando una integridad referencial del 100% en el *merge* final.
-3. **Modelado Predictivo (Random Forest):** Evaluación del peso de variables macroeconómicas y de infraestructura sobre el resultado deportivo.
-4. **Simulación Estocástica (Monte Carlo):** Proyección de ingresos a largo plazo para mitigar la varianza inherente al fútbol.
+1. **Web Scraping Multifuente:** Extracción automatizada de datos de *Transfermarkt* (valores de mercado), *FBref* (estadísticas deportivas) y portales inmobiliarios (valor del m²).
+2. **Pipeline de Estandarización (ETL):** Implementación de un **Diccionario Maestro de Clubes** para resolver la inconsistencia de nombres entre fuentes, logrando una integridad referencial del 100%.
+3. **Modelado Predictivo:** Entrenamiento de un algoritmo de *Random Forest* para identificar los drivers de victoria.
+4. **Simulación de Negocio:** Proyección de ingresos incrementales por capacidad de aforo y conversión de masa societaria.
 
 ---
 
 ## 📊 Hallazgos Clave (Insights)
 
-### 1. ¿Qué determina realmente la victoria?
-A través del análisis de *Feature Importance*, observamos que la **jerarquía del plantel** y los **ingresos operativos** tienen un peso superior a cualquier factor ambiental.
+### 1. Drivers de Victoria: La jerarquía sobre el cemento
+El análisis de *Feature Importance* revela que la **Diferencia de Valor de Plantel** y la **Brecha de Ingresos** son los factores con mayor peso predictivo. La capacidad física del estadio, por sí sola, tiene una relevancia secundaria en el resultado deportivo inmediato.
 
 ![Importancia de Variables](images/importancia_variables.png)
 
-### 2. El Fútbol es Estocástico
-El modelo de clasificación arrojó un *Accuracy* del 51% para predecir victorias locales. Este resultado, lejos de ser una falla, documenta la naturaleza estocástica del deporte: a corto plazo, un partido es ruido estadístico; a largo plazo (27 fechas), la billetera y la estructura dominan la tendencia.
+### 2. Correlación de Variables
+El mapa de calor confirma una correlación positiva moderada entre la masa societaria y las victorias locales, reforzando la idea de que un estadio más grande permite una base de socios más amplia, lo que eventualmente se traduce en mayor presupuesto para el plantel.
 
-![Matriz de Correlación](images/matriz_correlacion.png)
+![Mapa de Correlación](images/mapa_correlacion.png)
 
-### 3. El Costo de la Nostalgia (Project Finance)
-Mantener un aforo de 54.000 personas genera un **Lucro Cesante anual multimillonario**. Nuestro modelo proyecta que pasar a 100.000 localidades destrabaría:
-* **Matchday & Hospitality:** +46.000 tickets por partido y nuevas zonas VIP cotizadas en moneda dura.
-* **Demanda Latente (Socios):** Optimización del embudo de conversión de Socios Adherentes a Activos (basado en cuotas reales a marzo 2026 de $19.000 y $38.000 ARS).
+---
+
+## ⚙️ Validación Técnica del Modelo
+
+Para asegurar la fiabilidad de las conclusiones, se evaluó el rendimiento del modelo de *Random Forest* mediante una **Matriz de Confusión**. Dado que el fútbol es un deporte estocástico (con un alto componente de azar), el modelo busca identificar tendencias estructurales más que resultados exactos de un solo partido.
+
+![Matriz de Confusión](images/matriz_confusion.png)
 
 ---
 
 ## 🗺️ Análisis Geoespacial: "Billetera Mata Barrio"
-Utilizando `Folium`, se mapeó la relación entre el rendimiento local y el entorno socioeconómico de los estadios. Se concluye que no existe relación causal entre la riqueza del barrio y el *Win Rate*.
+
+Utilizando librerías GIS, mapeamos el rendimiento de localía frente al valor inmobiliario del entorno. Los datos demuestran que no existe una ventaja deportiva inherente a la ubicación geográfica o la riqueza del barrio; el éxito es un producto de la gestión financiera y la escala de infraestructura.
 
 ![Mapa de Estadios](images/mapa_estadios.png)
 
 ---
 
-## ⚠️ Notas Metodológicas (Data Caveats)
+## 💰 El Costo de la Nostalgia (Project Finance)
 
-> **Sesgo de Selección Inmobiliaria:** El valor del m² extraído mediante scraping sobreestima el valor en zonas de alta disparidad socioeconómica (e.g., Florencio Varela o Sarandí) al no registrar viviendas informales. Para entornos productivos, se recomienda cruzar con indicadores NBI del INDEC.
+Mantener un aforo de 54.000 personas genera un **Lucro Cesante anual multimillonario**. Nuestro modelo proyecta que pasar a 100.000 localidades destrabaría:
+* **Matchday & Hospitality:** +46.000 tickets por partido y nuevas zonas VIP.
+* **Optimización de Cuotas:** Conversión masiva de Socios Adherentes a Activos (basado en valores a marzo 2026 de $19.000 y $38.000 ARS).
 
 ---
 
 ## 💻 Tecnologías Utilizadas
 
 * **Lenguaje:** `Python 3.x`
-* **Ingeniería de Datos:** `Pandas`, `BeautifulSoup` (Scraping), `NumPy`.
-* **Machine Learning:** `Scikit-Learn` (Random Forest).
-* **Visualización:** `Matplotlib`, `Seaborn`, `Folium` (GIS).
-* **BI:** Integración con `Power BI` para despliegue de *Dashboards* ejecutivos.
+* **Ingeniería de Datos:** `Pandas`, `BeautifulSoup`, `NumPy`.
+* **Machine Learning:** `Scikit-Learn`.
+* **Visualización:** `Matplotlib`, `Seaborn`, `Folium`.
+* **BI:** Integración con `Power BI` para dashboards ejecutivos.
+
+---
+*Proyecto desarrollado para demostrar competencias en **Data Science**, **Evaluación de Riesgos** y **Análisis Estratégico de Negocios**.*
 
 ---
 *Proyecto desarrollado para demostrar competencias en **Data Science**, **Evaluación de Riesgos** y **Análisis Estratégico de Negocios**.*
