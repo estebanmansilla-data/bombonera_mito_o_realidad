@@ -18,7 +18,7 @@ Este proyecto aplica técnicas de **Ciencia de Datos, Machine Learning y Simulac
 
 El proyecto se estructuró en fases incrementales, destacando un robusto proceso de ingeniería de datos previo al modelado:
 
-1. **Web Scraping Multifunte:** Extracción automatizada de datos de *Transfermarkt* (valores de mercado), *FBref* (estadísticas deportivas) y portales inmobiliarios (valor del m²), utilizando `BeautifulSoup` y `Requests`.
+1. **Web Scraping Multifuente:** Extracción automatizada de datos de *Transfermarkt* (valores de mercado), *FBref* (estadísticas deportivas) y portales inmobiliarios (valor del m²), utilizando `BeautifulSoup` y `Requests`.
 2. **Pipeline de Estandarización (ETL):** Implementación de un **Diccionario Maestro de Clubes** para resolver la inconsistencia de nombres entre fuentes (e.g., "Boca", "C.A.B.J.", "Boca Juniors"), logrando una integridad referencial del 100% en el *merge* final.
 3. **Modelado Predictivo (Random Forest):** Evaluación del peso de variables macroeconómicas y de infraestructura sobre el resultado deportivo.
 4. **Simulación Estocástica (Monte Carlo):** Proyección de ingresos a largo plazo para mitigar la varianza inherente al fútbol.
@@ -30,12 +30,12 @@ El proyecto se estructuró en fases incrementales, destacando un robusto proceso
 ### 1. ¿Qué determina realmente la victoria?
 A través del análisis de *Feature Importance*, observamos que la **jerarquía del plantel** y los **ingresos operativos** tienen un peso superior a cualquier factor ambiental.
 
-![Importancia de Variables](Visualizaciones/importancia_variables.png)
+![Importancia de Variables](images/importancia_variables.png)
 
 ### 2. El Fútbol es Estocástico
 El modelo de clasificación arrojó un *Accuracy* del 51% para predecir victorias locales. Este resultado, lejos de ser una falla, documenta la naturaleza estocástica del deporte: a corto plazo, un partido es ruido estadístico; a largo plazo (27 fechas), la billetera y la estructura dominan la tendencia.
 
-![Matriz de Correlación](Visualizaciones/matriz_correlacion.png)
+![Matriz de Correlación](images/matriz_correlacion.png)
 
 ### 3. El Costo de la Nostalgia (Project Finance)
 Mantener un aforo de 54.000 personas genera un **Lucro Cesante anual multimillonario**. Nuestro modelo proyecta que pasar a 100.000 localidades destrabaría:
@@ -47,7 +47,7 @@ Mantener un aforo de 54.000 personas genera un **Lucro Cesante anual multimillon
 ## 🗺️ Análisis Geoespacial: "Billetera Mata Barrio"
 Utilizando `Folium`, se mapeó la relación entre el rendimiento local y el entorno socioeconómico de los estadios. Se concluye que no existe relación causal entre la riqueza del barrio y el *Win Rate*.
 
-![Mapa de Estadios](Visualizaciones/mapa_estadios.png)
+![Mapa de Estadios](images/mapa_estadios.png)
 
 ---
 
