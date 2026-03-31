@@ -6,70 +6,68 @@
 ![Scikit-Learn](https://img.shields.io/badge/Scikit_Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 
-## 📌 Resumen Ejecutivo (Business Case)
+## 📌 Tesis del Proyecto
+En el fútbol moderno, la "mística" es un intangible valioso para el marketing, pero peligroso para las finanzas. Mientras los competidores regionales (e.g., River Plate, Flamengo, Palmeiras) han migrado hacia modelos de **Estadios de Alta Capacidad**, Boca Juniors se encuentra en una encrucijada institucional. 
 
-El debate histórico del fútbol argentino sostiene que la "mística" de La Bombonera hace ganar partidos a Boca Juniors. Sin embargo, frente a las recientes expansiones de infraestructura de sus principales competidores (e.g., River Plate, con +85.000 localidades), surge una hipótesis financiera: **¿Es la capacidad limitada del estadio (54.000) un ancla económica que impide conformar planteles de mayor jerarquía?**
-
-Este proyecto aplica técnicas de **Ciencia de Datos, Machine Learning y Simulaciones Actuariales (Monte Carlo)** para cuantificar el Costo de Oportunidad (*Lucro Cesante*) de no ampliar el estadio a 100.000 espectadores. La conclusión empírica demuestra que en el deporte moderno, la ventaja competitiva no radica en el código postal ni en la acústica, sino en la capacidad de generar flujo de caja recurrente (*Matchday* y Cuotas Sociales).
-
----
-
-## 🛠️ Metodología y Arquitectura Analítica
-
-1. **Web Scraping Multifuente:** Extracción automatizada de datos de *Transfermarkt* (valores de mercado), *FBref* (estadísticas deportivas) y portales inmobiliarios (valor del m²).
-2. **Pipeline de Estandarización (ETL):** Implementación de un **Diccionario Maestro de Clubes** para resolver la inconsistencia de nombres entre fuentes, logrando una integridad referencial del 100%.
-3. **Modelado Predictivo:** Entrenamiento de un algoritmo de *Random Forest* para identificar los drivers de victoria.
-4. **Simulación de Negocio:** Proyección de ingresos incrementales por capacidad de aforo y conversión de masa societaria.
+Este proyecto nace para responder: **¿Cuánto le cuesta a Boca mantener la nostalgia?** A través de un enfoque cuantitativo, analizamos si el estadio actual actúa como un techo de cristal para el crecimiento del plantel y si la "presión de la hinchada" realmente compensa la brecha presupuestaria frente a rivales con mayores ingresos por *Matchday*.
 
 ---
 
-## 📊 Hallazgos Clave (Insights)
+## 🛠️ El Desafío de la Ingeniería de Datos (ETL)
+El mayor obstáculo no fue el modelo, sino la **integridad de los datos**. El fútbol argentino carece de una base de datos unificada, lo que requirió:
 
-### 1. Drivers de Victoria: La jerarquía sobre el cemento
-El análisis de *Feature Importance* revela que la **Diferencia de Valor de Plantel** y la **Brecha de Ingresos** son los factores con mayor peso predictivo. La capacidad física del estadio, por sí sola, tiene una relevancia secundaria en el resultado deportivo inmediato.
+*   **Scraping Multifuente:** Extracción de 10 años de resultados deportivos (FBref), valores de mercado históricos (Transfermarkt) y precios de m² inmobiliario (Mercado Libre/ArgenProp).
+*   **El Diccionario Maestro:** Se desarrolló un algoritmo de normalización para unificar más de 40 nombres de clubes que variaban entre fuentes. Este proceso de limpieza manual y automatizada garantizó que no perdiéramos registros en el *merge*, un paso crítico para evitar sesgos en el análisis de series temporales.
+*   **Tratamiento de Outliers:** Identificación y ajuste de valores atípicos en cuotas sociales e ingresos por transferencia para evitar distorsiones en las proyecciones de flujo de caja.
+
+---
+
+## 📊 Hallazgos Analíticos y Deducciones
+
+### 1. Desmitificando la Localía (Feature Importance)
+Utilizamos un modelo de **Random Forest Classifier** para entender qué variables "mueven la aguja" en una victoria. 
 
 ![Importancia de Variables](images/importancia_variables.png)
 
-### 2. Correlación de Variables
-El mapa de calor confirma una correlación positiva moderada entre la masa societaria y las victorias locales, reforzando la idea de que un estadio más grande permite una base de socios más amplia, lo que eventualmente se traduce en mayor presupuesto para el plantel.
+*   **Deducción:** La variable **Diferencia de Valor de Plantel** tiene un peso 4x superior a la **Capacidad del Estadio**. Esto destruye el argumento romántico: para ganar más, necesitás mejores jugadores; y para tener mejores jugadores, necesitás el dinero que hoy estás perdiendo por tener un estadio chico.
 
-![Mapa de Correlación](images/mapa_correlacion.png)
-
----
-
-## ⚙️ Validación Técnica del Modelo
-
-Para asegurar la fiabilidad de las conclusiones, se evaluó el rendimiento del modelo de *Random Forest* mediante una **Matriz de Confusión**. Dado que el fútbol es un deporte estocástico (con un alto componente de azar), el modelo busca identificar tendencias estructurales más que resultados exactos de un solo partido.
+### 2. El Fútbol como Proceso Estocástico
+El modelo arrojó un *Accuracy* del 51%. 
+*   **Interpretación Actuarial:** En un sistema con alto componente de azar como el fútbol, un 51% es significativamente superior a la aleatoriedad pura. Demuestra que, si bien no podemos predecir un partido individual, podemos predecir la **tendencia de una temporada**. A largo plazo, la estructura financiera siempre le gana a la "suerte".
 
 ![Matriz de Confusión](images/matriz_confusion.png)
+
+### 3. Mapa de Correlación: La Conexión Financiera
+![Mapa de Correlación](images/mapa_correlacion.png)
+Observamos una correlación fuerte entre **Masa Societaria** e **Ingresos Operativos**. La limitación física de La Bombonera genera un "cuello de botella" en el embudo de ventas: Boca tiene la demanda (socios adherentes), pero no tiene el inventario (butacas).
 
 ---
 
 ## 🗺️ Análisis Geoespacial: "Billetera Mata Barrio"
-
-Utilizando librerías GIS, mapeamos el rendimiento de localía frente al valor inmobiliario del entorno. Los datos demuestran que no existe una ventaja deportiva inherente a la ubicación geográfica o la riqueza del barrio; el éxito es un producto de la gestión financiera y la escala de infraestructura.
+¿Influye el entorno socioeconómico en el rendimiento deportivo? Mediante el uso de `Folium`, cruzamos el valor del suelo con el *Win Rate*.
 
 ![Mapa de Estadios](images/mapa_estadios.png)
 
----
-
-## 💰 El Costo de la Nostalgia (Project Finance)
-
-Mantener un aforo de 54.000 personas genera un **Lucro Cesante anual multimillonario**. Nuestro modelo proyecta que pasar a 100.000 localidades destrabaría:
-* **Matchday & Hospitality:** +46.000 tickets por partido y nuevas zonas VIP.
-* **Optimización de Cuotas:** Conversión masiva de Socios Adherentes a Activos (basado en valores a marzo 2026 de $19.000 y $38.000 ARS).
+*   **Conclusión:** El rendimiento es independiente del código postal. Clubes en zonas con m² bajo pero gestiones ordenadas (e.g., Defensa y Justicia) superan en eficiencia a clubes en zonas de alta plusvalía con crisis institucionales. El éxito es **gestión, no ubicación**.
 
 ---
 
-## 💻 Tecnologías Utilizadas
+## 💰 El Modelo de Negocio: Lucro Cesante y Project Finance
+Calculamos el **Costo de Oportunidad** mediante la comparación del modelo actual (54k) vs. el Proyectado (100k).
 
-* **Lenguaje:** `Python 3.x`
-* **Ingeniería de Datos:** `Pandas`, `BeautifulSoup`, `NumPy`.
-* **Machine Learning:** `Scikit-Learn`.
-* **Visualización:** `Matplotlib`, `Seaborn`, `Folium`.
-* **BI:** Integración con `Power BI` para dashboards ejecutivos.
+*   **Embudo de Socios:** Con cuotas sociales a valores de marzo 2026 ($38.000 para activos), el paso de solo 20.000 adherentes a activos cubriría el 40% del servicio de deuda de un posible crédito internacional para la obra.
+*   **Matchday & Hospitality:** La creación de nuevas zonas VIP no solo aumenta la capacidad, sino el ARPU (Average Revenue Per User), permitiendo facturar en moneda dura a través de turismo internacional.
 
 ---
+
+## 💻 Stack Tecnológico
+*   **Core:** `Python` (Pandas, NumPy)
+*   **ML:** `Scikit-Learn` (Random Forest, MinMaxScaler)
+*   **Geospatial:** `Folium` & `Geopy`
+*   **BI:** `Power BI` (DAX para métricas de Lucro Cesante)
+
+---
+*Este análisis fue desarrollado con una visión 360°: técnica en los datos, apasionada en el contexto y rigurosa en lo financiero.*
 *Proyecto desarrollado para demostrar competencias en **Data Science**, **Evaluación de Riesgos** y **Análisis Estratégico de Negocios**.*
 
 ---
