@@ -7,7 +7,7 @@
 [![Folium](https://img.shields.io/badge/Folium-77B829?style=for-the-badge&logo=folium&logoColor=white)](https://python-visualization.github.io/folium/)
 
 ## 📌 Tesis del Proyecto
-En el fútbol moderno, la "mística" es un intangible valioso para el marketing, pero peligroso para la planificación financiera. Mientras competidores regionales han migrado hacia modelos de estadios de alta capacidad y generación de ingresos auxiliares, Boca Juniors enfrenta un dilema: **¿Es la capacidad limitada de La Bombonera (54.000) un activo cultural o un pasivo económico?**
+En el fútbol moderno, la "mística" es un intangible valioso para el marketing, pero peligroso para la planificación financiera. Mientras competidores regionales han migrado hacia modelos de estadios de alta capacidad y generación de ingresos auxiliares, Boca Juniors enfrenta un dilema: **¿Es la capacidad limitada de La Bombonera un activo cultural o un pasivo económico?**
 
 Este proyecto utiliza Ciencia de Datos y Modelado Actuarial para cuantificar el **Lucro Cesante** de la infraestructura actual y evaluar la viabilidad de una expansión a 100.000 espectadores, analizando la correlación entre ingresos, jerarquía del plantel y éxito deportivo.
 
