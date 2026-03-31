@@ -70,5 +70,3 @@ Calculamos el **Costo de Oportunidad** mediante la comparación del modelo actua
 *Este análisis fue desarrollado con una visión 360°: técnica en los datos, apasionada en el contexto y rigurosa en lo financiero.*
 *Proyecto desarrollado para demostrar competencias en **Data Science**, **Evaluación de Riesgos** y **Análisis Estratégico de Negocios**.*
 
----
-*Proyecto desarrollado para demostrar competencias en **Data Science**, **Evaluación de Riesgos** y **Análisis Estratégico de Negocios**.*
