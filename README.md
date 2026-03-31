@@ -27,7 +27,7 @@ El análisis se fundamenta en la integración de fuentes heterogéneas, superand
 ### 1. Benchmarking Estratégico: El Techo de Cristal
 Antes de predecir, comparamos las métricas maestras frente al principal competidor. El análisis revela que, si bien existe un liderazgo holgado en popularidad y masa societaria (demanda), la limitación física del estadio (oferta) neutraliza esa ventaja competitiva en la generación de ingresos.
 
-![Benchmarking Competitivo](Visualizaciones/benchmarking_boca_river.png)
+![Benchmarking Competitivo](images/benchmarking_boca_river.png)
 
 ### 2. Drivers de Victoria (Feature Importance)
 Utilizando un modelo de **Random Forest**, identificamos que la **Diferencia de Valor de Plantel** tiene un peso predictivo significativamente mayor que la capacidad del estadio.
@@ -44,7 +44,7 @@ Con un *Accuracy* del 51%, el modelo valida que, si bien el azar predomina en el
 ## 🎯 Análisis de Negocio: ¿Mística o Billetera?
 Al cruzar el ratio de victorias de local (Win Rate) con la diferencia promedio del valor del plantel, la línea de tendencia demuestra una correlación positiva innegable: los clubes que más invierten en sus planteles son los que más aseguran su localía, desmitificando factores acústicos o intangibles.
 
-![Correlación Mística vs Billetera](Visualizaciones/correlacion_mistica_billetera.png)
+![Correlación Mística vs Billetera](images/correlacion_mistica_billetera.png)
 
 ---
 
@@ -57,7 +57,7 @@ Para mitigar el riesgo de basar el proyecto en proyecciones lineales, se impleme
     *(Donde $P_i$ es la probabilidad de resultado deportivo y $n$ los partidos de local).*
 *   **Resultado (VaR - Value at Risk):** La simulación permite identificar escenarios de "Estrés Deportivo" y demuestra cómo una inyección de capital en infraestructura desplaza la curva de distribución de probabilidades hacia un mayor rendimiento deportivo esperado.
 
-![Simulación Montecarlo](Visualizaciones/montecarlo_simulacion.png)
+![Simulación Montecarlo](images/montecarlo_simulacion.png)
 
 ---
 
@@ -71,13 +71,13 @@ Mediante `Folium`, se cruzó el rendimiento local con el valor del suelo (USD/m�
 ## 💰 Conclusión: El Project Finance y el Lucro Cesante
 El mantenimiento del aforo actual genera un **Lucro Cesante** multimillonario que compromete la competitividad a largo plazo.
 
-![Costo de la Mística](Visualizaciones/waterfall_costo_mistica.png)
+![Costo de la Mística](images/waterfall_costo_mistica.png)
 
 La expansión a 100.000 espectadores no es un gasto, sino una inversión de capital (CAPEX) recuperable mediante:
 *   **Conversión de Socios (Demanda Latente):** El paso masivo de adherentes a activos genera un flujo de caja recurrente masivo que soporta la estructuración de la deuda, inyectando miles de millones de pesos extra al año solo en cuotas.
 *   **Economías de Escala:** Optimización de costos fijos por espectador y maximización de ingresos por *Matchday* y zonas VIP/Hospitality.
 
-![Expansión Societaria](Visualizaciones/expansion_masa_societaria.png)
+![Expansión Societaria](images/expansion_masa_societaria.png)
 
 ---
 
